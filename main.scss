@@ -1,0 +1,33 @@
+$line-color : #2c3e50;
+$text-color : #3498db;
+$font-family : 'Rochester', cursive;
+body{
+	font-family: $font-family;
+}
+.board {
+	margin: 0 auto;
+	display: block;
+	width: 300px;
+}
+.row {
+	border-top: 1px solid $line-color;
+	border-right: 1px solid $line-color;
+	width: 300px;
+	&:last-child {
+		border-bottom: 1px solid $line-color;
+	}
+}
+.cell {
+	width: 99px;
+	display: inline-block;
+	height: 99px;
+	border-left:1px solid $line-color;
+	text-align: center;
+	vertical-align: middle;
+	cursor:pointer;
+}
+span {
+	color: $text-color;
+	font-size : 50px;
+	line-height: 100px;
+}

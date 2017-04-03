@@ -1,0 +1,17 @@
+div.src-only
+	ol
+		li Display 3x3 board: Basically, every cell would be a div register to mouse click event, but how to display this board effectively
+		li Make a move
+		li Make output result, check who win, lose, or draw
+		li Make AI, this would be awesome
+		li Deliver the application
+
+div(ng-app="TicTacToeApp")
+	div.container-fluid(ng-controller="TicTacToeController")
+		div.board
+			div.row(ng-repeat="row in board track by $index")
+				div.cell(ng-repeat="cell in row track by $index", ng-click="handleCellClick($parent.$index,$index)")
+					span {{cell}}
+
+		div(ng-repeat="t in test")
+			span {{t}}		
