@@ -8,10 +8,26 @@ div.src-only
 
 div(ng-app="TicTacToeApp")
 	div.container-fluid(ng-controller="TicTacToeController")
-		div.board
-			div.row(ng-repeat="row in board track by $index")
-				div.cell(ng-repeat="cell in row track by $index", ng-click="handleCellClick($parent.$index,$index)")
-					span {{cell}}
+		div.row
+			div.board(ng-class="runningGame? 'display-board': 'disable-board'", ng-disable="!runningGame")
+				div.board-row.support-row
+					div.row-index
+						span 
+					div.cell.col-index(ng-repeat="i in colIndexArray track by $index")
+						span {{i}}
+				div.board-row(ng-repeat="row in board track by $index")
+					div.row-index
+						span {{$index + 1}}
+					div.cell(ng-repeat="cell in row track by $index", ng-click="handleCellClick($parent.$index,$index)")
+						span(ng-class="currentRowIndex ===  $parent.$index && currentColIndex === $index? 'current': ''") {{cell}}
+			div.function-buttons
+				button.btn.btn-primary(ng-click="resetGame()") 
+					i.glyphicon.glyphicon-repeat
 
-		div(ng-repeat="t in test")
-			span {{t}}		
+			div.logs
+				ul
+					li.log(ng-repeat="log in logs track by $index")
+						span {{log}}
+
+			div.message(ng-hide="runningGame")
+				span {{message}}	
